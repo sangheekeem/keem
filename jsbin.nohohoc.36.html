@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2024 by sangheekeem (http://jsbin.com/nohohoc/36/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소지품</title>
+    <link rel="stylesheet" href="styles.css">
+<style id="jsbin-css">
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: black;
+    background-image: url('https://i.imgur.com/ZGhL9ha.png'), url('https://i.imgur.com/DIuUnFl.png');
+    background-size: 30%, 27%;
+    background-repeat: no-repeat, no-repeat;
+    background-position: left center, right center;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+#text {
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.3s ease;
+    filter: blur(5px);
+}
+
+#text:hover {
+    transform: scale(1.1);
+    filter: blur(0);
+}
+
+.image {
+    display: none;
+    position: absolute;
+    border-radius: 50%;
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    transition: transform 0.3s ease;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(50px, -30px); }
+    50% { transform: translate(-30px, 50px); }
+    75% { transform: translate(-50px, -20px); }
+    100% { transform: translate(0, 0); }
+}
+
+#message {
+    font-size: 20px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    text-align: center;
+    text-shadow: 
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+</style>
+</head>
+<body>
+    <div id="container">
+        <p id="text">소지품을 들여다볼까요?</p>
+        <img class="image" src="https://i.imgur.com/oUtI5zX.png" data-message="의사 선생님께서 인공눈물보다 눈을 자주 깜빡이는 습관이 더 좋다고 하셨던 말씀이 인공눈물을 쓰고 나서 떠올랐다. 그리고 다음 날, 또 인공눈물을 넣는다.">
+        <img class="image" src="https://i.imgur.com/KMlL9XZ.png" data-message="어느 순간부터 책 읽는 것을 싫어했지만, 본가에서 통학을 시작하며 시간을 알차게 활용하고 싶어 가방에 책을 넣고 다니기 시작했다. 그러면서 지하철이 내가 독서에 가장 집중할 수 있는 장소라는 걸 깨달았다.">
+        <img class="image" src="https://i.imgur.com/QjxZZ1i.png" data-message="지갑 속 카드들을 살펴보다 보면, 그 중 한 장은 온통 스크래치로 덮여 있다.">
+        <img class="image" src="https://i.imgur.com/yPyX24F.png" data-message="레고와 가구 조립을 좋아하는 나는 어릴 때 아빠와 함께 가구를 조립하던 기억이 떠오른다. 그때 아빠에게 배운 것은 작은 부분이 큰 차이를 만든다는 것이었다.">
+        <img class="image" src="https://i.imgur.com/UMWqyBW.png" data-message="헤드셋이 고장이 나서 며칠간 소리가 들리지 않았을 때, 얼마나 그 소리가 그리웠는지 모른다. 그 이후로 나는 기계를 더 아끼고, 소중히 관리하게 되었다.">
+        <img class="image" src="https://i.imgur.com/nnteGC2.png" data-message="누구나 벨트에는 자주 사용하는 구멍이 하나씩 있다. 시간이 지나면서 벨트가 닳고 수명을 다할 때, 그 구멍 주변에서 실밥이 나오거나 가죽이 찢어지는 모습을 볼 수 있다. 특히 아끼는 벨트일 경우에는 그 구멍이 마음 아프다.">
+        <img class="image" src="https://i.imgur.com/dKxwzE2.png" data-message="탈색은 내게 아직도 해결되지 않은 숙제다.">
+        <img class="image" src="https://i.imgur.com/Tl0rXDV.png" data-message="지퍼가 많은 가방을 선호한다. 여행 중 가방을 열어보니 지퍼 하나하나에 필요한 물건들이 딱 맞게 정리되어 있어 뿌듯함을 느낄때도 있었다.">
+        <img class="image" src="https://i.imgur.com/kCjpbWJ.png" data-message="무채색에 대한 집착이 있다. 처음에는 단순히 좋아하는 색이었지만, 점점 그 색이 주는 차분하고 안정된 느낌에 매료되었다.">
+        <img class="image" src="https://i.imgur.com/QO0MY59.png" data-message="지우개는 어릴 때부터 항상 책상 위에 있었던 물건이었다. 실수를 지울 때마다 그만큼 깔끔해지는 기분이 좋았나 보다.">
+        <img class="image" src="https://i.imgur.com/KoWNpnK.png" data-message="작은 금속 조각들이 마치 미세한 우주처럼 펼쳐져 있는 걸 보니, 평범한 물건도 이렇게 특별하게 변할 수 있다는 사실에 기분이 좋았다.">
+        <img class="image" src="https://i.imgur.com/qlySBJu.png" data-message="온도에 변화에 많이 예민해서 별명이 스테인리스다. 밖에서 버티려면 털옷을 입어야 하고, 그래서 내 겨울 옷은 항상 무겁다.">
+        <p id="message"></p> 
+    </div>
+    <script src="script.js"></script>
+<script id="jsbin-javascript">
+const textElement = document.getElementById('text');
+const images = document.querySelectorAll('.image');
+const message = document.getElementById('message');
+let isImageClicked = false;
+
+function setRandomPosition(image) {
+    const randomX = Math.random() * (window.innerWidth - 100); 
+    const randomY = Math.random() * (window.innerHeight - 100); 
+    image.style.left = `${randomX}px`;
+    image.style.top = `${randomY}px`;
+}
+
+function setRandomSize(image) {
+    const randomSize = Math.random() * 150 + 50;
+    image.style.width = `${randomSize}px`;
+    image.style.height = `${randomSize}px`;
+}
+
+textElement.addEventListener('click', () => {
+    if (!isImageClicked) {
+        textElement.style.display = 'none';
+        images.forEach((image) => {
+            setRandomPosition(image); 
+            setRandomSize(image); 
+            image.style.display = 'block'; 
+
+            const randomDelay = Math.random() * 5; 
+            const randomDuration = Math.random() * 5 + 5; 
+
+            image.style.animation = `float ${randomDuration}s linear infinite ${randomDelay}s`;
+        });
+        isImageClicked = true;
+    }
+});
+
+images.forEach(image => {
+    image.addEventListener('click', (event) => {
+        images.forEach(img => {
+            if (img !== event.target) {
+                img.style.animationPlayState = 'running';
+            } else {
+                img.style.animation = 'none'; 
+            }
+        });
+
+        image.style.width = '100vw';
+        image.style.height = '100vh';
+        image.style.top = '0';
+        image.style.left = '0';
+        image.style.borderRadius = '0';
+
+        message.innerHTML = event.target.getAttribute('data-message');
+        message.style.display = 'block';
+    });
+});
+
+</script>
+</body>
+</html>
+
+
